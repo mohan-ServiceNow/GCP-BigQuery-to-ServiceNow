@@ -17,21 +17,14 @@ BigQueryConnectUtils.prototype = {
 
                 // 		gdo-gcp-snow-svc@rax-landing.iam.gserviceaccount.com
                 var payloadJSON = {
-                        "iss": "gdo-gcp-snow-svc@rax-landing.iam.gserviceaccount.com",
-                        "sub": "gdo-gcp-snow-svc@rax-landing.iam.gserviceaccount.com",
+                        "iss": "******************Service Account***************************",
+                        "sub": "******************Service Account***************************",
                         "scope": "https://www.googleapis.com/auth/bigquery",
                         "aud": "https://oauth2.googleapis.com/token",
                         "exp": 1328554385,
                         "iat": 1328550785
                 };
-                //         var payloadJSON = {
-                //             "iss": "gdo-gcp-snow-dev@rax-landing-dev.iam.gserviceaccount.com",
-                // 			"sub": "gdo-gcp-snow-svc-dev@rax-landing.iam.gserviceaccount.com", 
-                //             "scope": "https://www.googleapis.com/auth/bigquery",
-                //             "aud": "https://oauth2.googleapis.com/token",
-                //             "exp": 1328554385,
-                //             "iat": 1328550785
-                //         };
+               
                 var payload = JSON.stringify(payloadJSON);
 
                 //         sys_id of JWT provider
@@ -61,33 +54,10 @@ BigQueryConnectUtils.prototype = {
                 /* In query passing SQL Commands, only a few fields and their data from BigQuery GCP racker_roaster table will be returned. the fields are
                 
                 ****  Fields *****
-                        work_email
-                        first_name
-                        last_name
-                        Preferred_name
-                        worker_manager
-                        sso
-                        job_profile
-                        cch_l1
-                        cch_l2
-                        cch_l3
-                        cch_l4
-                        cch_l5
-                        cch_l6
-                        cch_l7
-                        management_chain_level_00
-                        management_chain_level_01
-                        management_chain_level_02
-                        management_chain_level_03
-                        management_chain_level_04
-                        management_chain_level_05
-                        management_chain_level_06
-                        management_chain_level_07
-                        management_chain_level_08
-                        management_chain_level_09
+                        
                 	
                 ***** Condition *******
-                        report_effective_date = current_date() - 1
+                        
                 */
                 var body = {
                         "query": "select work_email,first_name,last_name,preferred_name,workers_manager,sso,job_profile,cch_l1,cch_l2,cch_l3,cch_l4,cch_l5,cch_l6,cch_l7,management_chain_level_00,management_chain_level_01,management_chain_level_02,management_chain_level_03,management_chain_level_04,management_chain_level_05,management_chain_level_06,management_chain_level_07,management_chain_level_08,management_chain_level_09 from rax-landing.workday_ods.racker_roster where report_effective_date = current_date() - 1;",
@@ -96,7 +66,7 @@ BigQueryConnectUtils.prototype = {
 
                 // 		Accessing the endpoint with the access token created in JSON format in line 44, and then parsing the JSON saved access token in line 47.
                 var raxRoasterTable = new sn_ws.RESTMessageV2();
-                raxRoasterTable.setEndpoint('https://bigquery.googleapis.com/bigquery/v2/projects/rax-landing/queries');
+                raxRoasterTable.setEndpoint('https://bigquery.googleapis.com/bigquery/v2/projects/{project_name}/queries');
                 raxRoasterTable.setHttpMethod('POST');
                 raxRoasterTable.setRequestHeader('authorization', 'Bearer ' + accessToken);
                 raxRoasterTable.setRequestHeader("accept", "application/json");
