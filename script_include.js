@@ -53,14 +53,10 @@ BigQueryConnectUtils.prototype = {
                 // The SQL commands in the following object will be run in the GCP BigQuery console by injecting them into the body.
                 /* In query passing SQL Commands, only a few fields and their data from BigQuery GCP racker_roaster table will be returned. the fields are
                 
-                ****  Fields *****
-                        
-                	
-                ***** Condition *******
                         
                 */
                 var body = {
-                        "query": "select work_email,first_name,last_name,preferred_name,workers_manager,sso,job_profile,cch_l1,cch_l2,cch_l3,cch_l4,cch_l5,cch_l6,cch_l7,management_chain_level_00,management_chain_level_01,management_chain_level_02,management_chain_level_03,management_chain_level_04,management_chain_level_05,management_chain_level_06,management_chain_level_07,management_chain_level_08,management_chain_level_09 from rax-landing.workday_ods.racker_roster where report_effective_date = current_date() - 1;",
+                        "query": "select * from spotlight-analytics-388311.test.roster;",
                         "useLegacySql": false
                 };
 
