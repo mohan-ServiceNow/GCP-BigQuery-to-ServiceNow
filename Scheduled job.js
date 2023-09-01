@@ -79,7 +79,7 @@ for (var x = 0; x < rowsRaxData.length; x++) {
 
     // 	If duplicate records are not discovered, then data in user org table will be inserted. 
     else {
-        var insertUser = new GlideRecord('u_user_org_data');
+        var insertUser = new GlideRecord('sys_user');
         insertUser.initialize();
         insertUser.u_email_id = rowsRaxData[x].f[0].v; //worker_email 
         insertUser.u_first_name = rowsRaxData[x].f[1].v; //first_name 
